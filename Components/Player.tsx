@@ -6,7 +6,7 @@ const Player = () => {
 
   
   return (
-    <RigidBody colliders="cuboid" type="dynamic" >
+    <RigidBody position={[0,0,-0.5]}colliders="cuboid" type="dynamic" >
     <mesh>
       <boxGeometry args={[0.4, 0.4, 0.4]} />
       <meshNormalMaterial />

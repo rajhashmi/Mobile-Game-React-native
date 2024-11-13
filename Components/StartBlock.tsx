@@ -23,6 +23,3 @@ const StartBlock = () => {
 
 export default StartBlock
 
-const styles = StyleSheet.create({})
-
-

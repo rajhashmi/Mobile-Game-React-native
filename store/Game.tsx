@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from 'zustand/middleware'
 
-export default create(subscribeWithSelector((set)=>{
+export default create(subscribeWithSelector((set,get)=>{
     return {
         phase : "ready",
         score: 0,
@@ -10,6 +10,9 @@ export default create(subscribeWithSelector((set)=>{
             set((state) => ({
                 land : [...state.land, landObj],
             }))
+        },
+        getLand: () => {
+            return get().land;  
         },
         start: () =>
             {

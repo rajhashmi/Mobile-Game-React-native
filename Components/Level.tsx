@@ -1,19 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { RigidBody } from '@react-three/rapier'
-import React from 'react'
+import { RigidBody } from "@react-three/rapier";
+import React, { useEffect, useRef } from "react";
+import useGameStore from "@/store/Game";
+import { BoxGeometry, MeshNormalMaterial } from "three";
 
-const StartBlock = () => {
+const Level = () => {
+  const rigidBodyRef = useRef();
+  const setLand = useGameStore((state) => state.setLand);
+
+  // Define geometry and material early
+  const geometry = new BoxGeometry(1.5, 0.5, 2.5);
+  const material = new MeshNormalMaterial();
+
+  // Only call setLand once when the component mounts
+  useEffect(() => {
+    if (rigidBodyRef.current) {
+      setLand(rigidBodyRef.current);
+    }
+  }, [setLand]);
+
   return (
-    <RigidBody colliders="cuboid" type="fixed">
-    <mesh position={[0,-2,0]}>
-        <boxGeometry  args={[2.5,0.5,2.5]}/>
-        <meshBasicMaterial/>
-    </mesh>
-    
+    <RigidBody ref={rigidBodyRef} colliders="cuboid">
+      <mesh position={[0, 0, 2.5]} geometry={geometry} material={material} />
     </RigidBody>
-  )
-}
+  );
+};
 
-export default StartBlock
-
-const styles = StyleSheet.create({})
+export default Level;

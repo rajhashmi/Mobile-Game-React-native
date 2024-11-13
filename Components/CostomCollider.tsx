@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native'
 import { RigidBody, CuboidCollider } from '@react-three/rapier'
 import React from 'react'
 
@@ -11,5 +10,3 @@ const CostomCollider = () => {
 }
 
 export default CostomCollider
-
-const styles = StyleSheet.create({})
